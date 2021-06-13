@@ -13,18 +13,21 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockRedstoneEvent;
 import org.bukkit.plugin.Plugin;
 
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 public class PotentialLagListener implements Listener {
 
-    private Plugin plugin;
+    private final Plugin plugin;
     private final Integer redstone_limit;
     private final Boolean enable_bypass_flag;
+    private final TextComponent disabled_message;
 
     public PotentialLagListener(Plugin plugin){
         this.plugin = plugin;
         this.redstone_limit = plugin.getConfig().getInt("redstone-limiting.max_redstone_operations_limit");
         this.enable_bypass_flag = plugin.getConfig().getBoolean("redstone-limiting.enable_bypass_flag");
+        this.disabled_message =  new TextComponent(plugin.getConfig().getString("redstone-limiting.message"));
     }
 
     private boolean check_bypass(Plot plot){
@@ -57,7 +60,7 @@ public class PotentialLagListener implements Listener {
                 if(redstoneMap.get(plot) >= this.redstone_limit){
                     event.setNewCurrent(0);
                     for(PlotPlayer<?> plotPlayer:plot.getPlayersInPlot()){
-                        this.plugin.getServer().getPlayer(plotPlayer.getUUID()).spigot().sendMessage(ChatMessageType.ACTION_BAR,new TextComponent("Redstone is currently disabled on this Plot"));
+                        Objects.requireNonNull(this.plugin.getServer().getPlayer(plotPlayer.getUUID())).spigot().sendMessage(ChatMessageType.ACTION_BAR,this.disabled_message);
                     }
                 }
 

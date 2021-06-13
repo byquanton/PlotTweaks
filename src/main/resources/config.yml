@@ -8,6 +8,7 @@ sound-blocking:
 
 redstone-limiting:
   enabled: true
+  message: "Redstone is currently temporally disabled on this Plot"
   enable_bypass_flag: true
   max_redstone_operations_limit: 4096
 
