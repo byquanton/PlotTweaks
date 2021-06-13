@@ -1,0 +1,16 @@
+# PlotTweaks Config
+
+sound-blocking:
+  enabled: true
+  block-wither-sound: true
+  block-end-portal-opening: true
+
+
+redstone-limiting:
+  enabled: true
+  enable_bypass_flag: true
+  max_redstone_operations_limit: 4096
+
+# ONLY WORKS WITH PAPER
+limit-beacon-to-plot: true
+

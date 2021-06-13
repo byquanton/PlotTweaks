@@ -1,0 +1,7 @@
+name: PlotTweaks
+version: ${project.version}
+main: me.byquanton.plottweaks.PlotTweaks
+api-version: 1.16
+load: STARTUP
+depend: [ PlotSquared, ProtocolLib ]
+authors: [ byquanton ]
