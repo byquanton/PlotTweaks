@@ -19,7 +19,7 @@ public class SoundsListener {
             public void onPacketSending(PacketEvent event) {
                 PacketContainer packetContainer = event.getPacket();
 
-                if (packetContainer.getIntegers().read(0) == 1023) { // 1023 = Wither spawn (https://wiki.vg/Protocol)
+                if (packetContainer.getIntegers().read(0) == 1023) {
                     packetContainer.getBooleans().write(0, false);
                 }
             }
@@ -31,7 +31,7 @@ public class SoundsListener {
             public void onPacketSending(PacketEvent event) {
                 PacketContainer packetContainer = event.getPacket();
 
-                if (packetContainer.getIntegers().read(0) == 1038) { // 1038 = End Portal opening (https://wiki.vg/Protocol)
+                if (packetContainer.getIntegers().read(0) == 1038) {
                     packetContainer.getBooleans().write(0, false);
                 }
             }
