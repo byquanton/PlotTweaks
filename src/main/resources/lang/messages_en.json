@@ -1,0 +1,6 @@
+
+{
+    "flags.flag_description_bypass_redstone_limit": "<gray>Set to `true` to disable the Redstone Operation Limit in the plot.</gray>"
+}
+
+

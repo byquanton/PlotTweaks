@@ -111,3 +111,9 @@ buildNumber.properties
 
 # Common working directory
 run/
+
+# Vscode 
+.settings
+.classpath
+.vscode
+.project

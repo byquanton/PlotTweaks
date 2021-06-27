@@ -1,7 +1,6 @@
 package me.byquanton.plottweaks.listener.bukkit;
 
 import com.comphenix.protocol.collections.ExpireHashMap;
-import com.plotsquared.bukkit.player.BukkitPlayer;
 import com.plotsquared.core.location.Location;
 import com.plotsquared.core.player.PlotPlayer;
 import com.plotsquared.core.plot.Plot;
@@ -33,7 +32,7 @@ public class PotentialLagListener implements Listener {
     private boolean check_bypass(Plot plot){
         if(this.enable_bypass_flag){
             try{
-                return plot.getFlagContainer().getFlag(RedstoneLimitBypassFlag.class).getValue();
+                return plot.getFlag(RedstoneLimitBypassFlag.class);
             }catch(NullPointerException e){
                 return false;
             }
@@ -45,7 +44,7 @@ public class PotentialLagListener implements Listener {
 
     @EventHandler
     public void onRedstoneEvent(BlockRedstoneEvent event){
-        Location location = new Location(event.getBlock().getWorld().getName(), event.getBlock().getX(), event.getBlock().getY() , event.getBlock().getZ());
+        Location location = Location.at(event.getBlock().getWorld().getName(), event.getBlock().getX(), event.getBlock().getY() , event.getBlock().getZ());
         Plot plot = location.getPlot();
 
         if(plot != null){

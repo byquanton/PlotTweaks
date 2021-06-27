@@ -1,7 +1,7 @@
 package me.byquanton.plottweaks.listener.bukkit;
 
 import com.destroystokyo.paper.event.block.BeaconEffectEvent;
-import com.plotsquared.core.api.PlotAPI;
+import com.plotsquared.core.PlotAPI;
 import com.plotsquared.core.location.Location;
 import com.plotsquared.core.plot.Plot;
 import org.bukkit.block.Block;
@@ -17,7 +17,7 @@ public class BeaconEffectListener implements Listener {
     public void onBeaconEffect(BeaconEffectEvent event){
         Player player = event.getPlayer();
         Block beacon = event.getBlock();
-        Location location = new Location(beacon.getWorld().getName(), beacon.getX(), beacon.getY() , beacon.getZ());
+        Location location = Location.at(beacon.getWorld().getName(), beacon.getX(), beacon.getY() , beacon.getZ());
 
         Plot plot = api.wrapPlayer(player.getUniqueId()).getCurrentPlot();
 
